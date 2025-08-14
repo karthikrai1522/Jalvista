@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jalvista | Customizable Water Bottles</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
+        body {
+            font-family: 'Poppins', sans-serif;
+            scroll-behavior: smooth;
+        }
+        .hero-bg {
+            background: linear-gradient(120deg, #e0f7fa 0%, #b2ebf2 100%);
+        }
+        .bottle-mockup {
+            transform-style: preserve-3d;
+            animation: float 6s ease-in-out infinite;
+        }
+        @keyframes float {
+            0%, 100% { transform: translateY(0) rotateX(5deg); }
+            50% { transform: translateY(-20px) rotateX(-5deg); }
+        }
+        .add-to-cart-btn {
+            transition: all 0.3s;
+        }
+        .add-to-cart-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 10px 20px rgba(0, 150, 136, 0.3);
+        }
+        .customize-tool li {
+            transition: transform 0.2s;
+        }
+        .customize-tool li:hover {
+            transform: translateY(-5px);
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- Navigation Bar -->
+    <nav class="bg-white shadow-lg">
+        <div class="container mx-auto px-6 py-3 flex justify-between items-center">
+            <div class="flex items-center space-x-4">
+                <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/caaf0af0-22bd-4548-9831-0427573294cb.png" alt="Jalvista Brand Logo - Water droplet in teal color" class="h-10">
+                <span class="text-xl font-semibold text-teal-600">Jalvista</span>
+            </div>
+            <div class="hidden md:flex space-x-8">
+                <a href="#" class="text-teal-600 font-medium">Home</a>
+                <a href="#products" class="text-gray-600 hover:text-teal-600">Products</a>
+                <a href="#customize" class="text-gray-600 hover:text-teal-600">Customize</a>
+                <a href="#features" class="text-gray-600 hover:text-teal-600">Features</a>
+                <a href="#testimonials" class="text-gray-600 hover:text-teal-600">Reviews</a>
+            </div>
+            <div class="flex items-center space-x-4">
+                <a href="#" class="text-gray-600 hover:text-teal-600">
+                    <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/bd52f2e7-3f20-48c8-96b0-8725093e5ba7.png" alt="Shopping cart icon" class="h-6">
+                </a>
+                <a href="#" onClick="event.preventDefault()" class="bg-teal-600 text-white px-4 py-2 rounded-md hover:bg-teal-700">Sign In</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero-bg py-20">
+        <div class="container mx-auto px-6 flex flex-col md:flex-row items-center">
+            <div class="md:w-1/2 mb-10 md:mb-0">
+                <h1 class="text-4xl md:text-5xl font-bold text-gray-800 mb-6">Hydrate in Style</h1>
+                <p class="text-xl text-gray-600 mb-8">Create your perfect water bottle with our easy customization tools and premium materials.</p>
+                <div class="flex space-x-4">
+                    <a href="#customize" class="bg-teal-600 text-white px-8 py-3 rounded-md font-medium hover:bg-teal-700">Design Yours Now</a>
+                    <a href="#products" class="border border-teal-600 text-teal-600 px-8 py-3 rounded-md font-medium hover:bg-teal-50">Browse Products</a>
+                </div>
+            </div>
+            <div class="md:w-1/2 flex justify-center">
+                <div class="bottle-mockup relative">
+                    <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/150b3317-6451-4328-ade9-803735069859.png" alt="Customizable water bottle showing ocean gradient design" class="w-full max-w-md">
+                    <div class="absolute -bottom-10 -right-10 bg-white p-4 rounded-lg shadow-xl">
+                        <p class="font-medium">Trending Now</p>
+                        <p class="text-teal-600">Ocean Gradient</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Customization Tool -->
+    <section id="customize" class="py-16 bg-gray-50">
+        <div class="container mx-auto px-6">
+            <h2 class="text-3xl font-bold text-center text-gray-800 mb-12">Design Your Bottle</h2>
+            <div class="flex flex-col md:flex-row gap-8">
+                <div class="md:w-1/2 bg-white p-8 rounded-xl shadow-lg">
+                    <!-- Bottle Preview -->
+                    <div class="relative bg-gray-100 rounded-lg p-8 flex justify-center items-center mb-6" style="min-height: 400px;">
+                        <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/d036d1fc-83a3-4465-918e-9c356d40b2c8.png" alt="Custom bottle preview area - Upload your design to see it here" id="bottle-preview" class="max-h-80">
+                    </div>
+                    
+                    <!-- Upload Controls -->
+                    <div class="mb-6">
+                        <label class="block text-gray-700 mb-2">Upload Your Design</label>
+                        <input type="file" id="design-upload" class="block w-full text-gray-700 bg-gray-100 rounded-md p-2" accept="image/*">
+                    </div>
+                    
+                    <!-- Customization Options -->
+                    <div class="grid grid-cols-2 gap-4 mb-6">
+                        <div>
+                            <label class="block text-gray-700 mb-2">Bottle Color</label>
+                            <select class="w-full bg-gray-100 rounded-md p-2">
+                                <option>Turquoise</option>
+                                <option>Midnight Black</option>
+                                <option>Coral Pink</option>
+                                <option>Olive Green</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="block text-gray-700 mb-2">Size</label>
+                            <select class="w-full bg-gray-100 rounded-md p-2">
+                                <option>500ml</option>
+                                <option>750ml</option>
+                                <option>1L</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <!-- Text Customization -->
+                    <div class="mb-6">
+                        <label class="block text-gray-700 mb-2">Add Custom Text</label>
+                        <input type="text" placeholder="Your name or text" class="w-full bg-gray-100 rounded-md p-2 mb-2">
+                        <div class="flex space-x-4">
+                            <div class="flex-1">
+                                <label class="block text-gray-700 mb-2">Font</label>
+                                <select class="w-full bg-gray-100 rounded-md p-2">
+                                    <option>Roboto</option>
+                                    <option>Montserrat</option>
+                                    <option>Playfair</option>
+                                </select>
+                            </div>
+                            <div class="flex-1">
+                                <label class="block text-gray-700 mb-2">Color</label>
+                                <input type="color" value="#4db6ac" class="w-full h-10 bg-gray-100 rounded-md">
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <button class="w-full bg-teal-600 text-white py-3 rounded-md font-medium hover:bg-teal-700">Buy Now (₹99)</button>
+                </div>
+                
+                <!-- Customization Tools -->
+                <div class="md:w-1/2">
+                    <h3 class="text-xl font-semibold text-gray-800 mb-6">Easy Customization Tools</h3>
+                    <ul class="space-y-6">
+                        <li class="customize-tool bg-white p-6 rounded-xl shadow-md">
+                            <div class="flex items-center">
+                                <div class="bg-teal-100 p-3 rounded-full mr-4">
+                                    <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/6914b3c3-4930-4187-ba41-e78577af004a.png" alt="Upload icon" class="h-6">
+                                </div>
+                                <div>
+                                    <h4 class="font-medium text-gray-800">Upload Your Photos</h4>
+                                    <p class="text-gray-600">Drag & drop images to see them instantly on your bottle</p>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="customize-tool bg-white p-6 rounded-xl shadow-md">
+                            <div class="flex items-center">
+                                <div class="bg-teal-100 p-3 rounded-full mr-4">
+                                    <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/95d2f35a-0cfa-4ab2-aae9-dde2fe1e21b4.png" alt="Design icon" class="h-6">
+                                </div>
+                                <div>
+                                    <h4 class="font-medium text-gray-800">Premium Design Templates</h4>
+                                    <p class="text-gray-600">Choose from our professionally designed templates</p>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="customize-tool bg-white p-6 rounded-xl shadow-md">
+                            <div class="flex items-center">
+                                <div class="bg-teal-100 p-3 rounded-full mr-4">
+                                    <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/1c3bd4f3-0947-4b20-93f9-5716ce590e2c.png" alt="Preview icon" class="h-6">
+                                </div>
+                                <div>
+                                    <h4 class="font-medium text-gray-800">Real-Time 3D Preview</h4>
+                                    <p class="text-gray-600">Rotate and view your design from all angles before buying</p>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                    
+                    <!-- Designer Showcase -->
+                    <div class="mt-12 bg-white p-6 rounded-xl shadow-md">
+                        <h3 class="text-xl font-semibold text-gray-800 mb-4">Designer Spotlight</h3>
+                        <div class="flex space-x-4 overflow-x-auto pb-4">
+                            <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/336c1d29-b7fd-4b17-9678-b4f46de4f1b5.png" alt="Trending tropical leaf design bottle" class="w-32 h-32 rounded-lg object-cover">
+                            <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/00957ee7-6428-4200-8e81-155d977bc07f.png" alt="Geometric pattern water bottle" class="w-32 h-32 rounded-lg object-cover">
+                            <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/dfb391a3-e011-480d-a75c-7a96e3f78aa7.png" alt="Marble texture luxury bottle" class="w-32 h-32 rounded-lg object-cover">
+                            <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/2186dc9d-4cb2-40f1-a39b-4e184eca4117.png" alt="Personalized name engraved bottle" class="w-32 h-32 rounded-lg object-cover">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features" class="py-16 bg-white">
+        <div class="container mx-auto px-6">
+            <h2 class="text-3xl font-bold text-center text-gray-800 mb-12">Why Choose Jalvista?</h2>
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="text-center p-6 rounded-xl bg-gray-50 hover:shadow-md transition-shadow">
+                    <div class="bg-teal-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/b77d1eb2-af2b-4407-82dc-5d3f8caa830e.png" alt="Premium materials icon" class="h-8">
+                    </div>
+                    <h3 class="text-xl font-semibold mb-2 text-gray-800">Premium Materials</h3>
+                    <p class="text-gray-600">Food-grade stainless steel & BPA-free plastics for safe hydration</p>
+                </div>
+                <div class="text-center p-6 rounded-xl bg-gray-50 hover:shadow-md transition-shadow">
+                    <div class="bg-teal-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/bbbc78db-b981-4863-b484-a5f1e56413e1.png" alt="Easy customization icon" class="h-8">
+                    </div>
+                    <h3 class="text-xl font-semibold mb-2 text-gray-800">Easy Customization</h3>
+                    <p class="text-gray-600">Design your perfect bottle in minutes with our intuitive tools</p>
+                </div>
+                <div class="text-center p-6 rounded-xl bg-gray-50 hover:shadow-md transition-shadow">
+                    <div class="bg-teal-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/97e8747a-ea4a-4463-9c19-f012860b5901.png" alt="Fast shipping icon" class="h-8">
+                    </div>
+                    <h3 class="text-xl font-semibold mb-2 text-gray-800">Fast Shipping</h3>
+                    <p class="text-gray-600">Most custom orders ship within 3 business days</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section id="testimonials" class="py-16 bg-gray-50">
+        <div class="container mx-auto px-6">
+            <h2 class="text-3xl font-bold text-center text-gray-800 mb-12">What Our Customers Say</h2>
+            <div class="grid md:grid-cols-2 gap-8">
+                <!-- Testimonial 1 -->
+                <div class="bg-white p-8 rounded-xl shadow-sm">
+                    <div class="flex items-center mb-4">
+                        <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/3fa89623-2c50-4894-bf45-10580d225cd4.png" alt="Sarah J. smiling customer" class="w-12 h-12 rounded-full mr-4">
+                        <div>
+                            <h4 class="font-semibold">Sarah J.</h4>
+                            <div class="flex text-yellow-400">
+                                ★★★★★
+                            </div>
+                        </div>
+                    </div>
+                    <p class="text-gray-600">"I get compliments on my Jalvista bottle every day! The customization was so easy and the quality exceeded my expectations. Worth every ₹!"</p>
+                </div>
+                
+                <!-- Testimonial 2 -->
+                <div class="bg-white p-8 rounded-xl shadow-sm">
+                    <div class="flex items-center mb-4">
+                        <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/d4d755b8-fa83-49e1-a3e1-b2324d1e862c.png" alt="Marcus T. happy customer" class="w-12 h-12 rounded-full mr-4">
+                        <div>
+                            <h4 class="font-semibold">Marcus T.</h4>
+                            <div class="flex text-yellow-400">
+                                ★★★★★
+                            </div>
+                        </div>
+                    </div>
+                    <p class="text-gray-600">"As a graphic designer, I appreciated how precise the printing was on my custom bottle. The colors matched my artwork perfectly. Shipping was super fast too!"</p>
+                </div>
+            </div>
+            
+            <!-- Trust Indicators -->
+            <div class="mt-16 flex flex-wrap justify-center gap-8 items-center">
+                <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/6d506b20-cddf-4c93-8caf-4ef52e3015a9.png" alt="Secure Payment Badge" class="h-12">
+                <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/b94f0dfc-7f70-479f-b0ab-aada60b94e0d.png" alt="Money Back Guarantee Badge" class="h-12">
+                <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/b65f5df8-d960-4c81-b03e-f43dad274aa1.png" alt="Eco-Friendly Certification" class="h-12">
+                <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/18489c5e-8997-46f0-b774-61e26fe411be.png" alt="5 Star Rating Average" class="h-12">
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="py-16 bg-white">
+        <div class="container mx-auto px-6 max-w-4xl">
+            <h2 class="text-3xl font-bold text-center text-gray-800 mb-12">Frequently Asked Questions</h2>
+            <div class="space-y-4">
+                <!-- FAQ Item 1 -->
+                <div class="border-b pb-4">
+                    <h3 class="font-semibold text-gray-800">How long does customization take?</h3>
+                    <p class="text-gray-600">Customization typically takes 1-3 business days, depending on the complexity of the design.</p>
+                </div>
+                <!-- FAQ Item 2 -->
+                <div class="border-b pb-4">
+                    <h3 class="font-semibold text-gray-800">What materials are used in your bottles?</h3>
+                    <p class="text-gray-600">We use high-quality stainless steel and BPA-free plastics to ensure safety and durability.</p>
+                </div>
+                <!-- FAQ Item 3 -->
+                <div class="border-b pb-4">
+                    <h3 class="font-semibold text-gray-800">Can I return a customized bottle?</h3>
+                    <p class="text-gray-600">Customized bottles are non-returnable unless there is a manufacturing defect. Please contact us for assistance.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-6">
+        <div class="container mx-auto px-6 text-center">
+            <p>&copy; 2023 Jalvista. All rights reserved.</p>
+            <div class="flex justify-center space-x-4 mt-2">
+                <a href="#" class="hover:text-teal-400">Privacy Policy</a>
+                <a href="#" class="hover:text-teal-400">Terms of Service</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Login Modal -->
+    <div id="loginModal" class="fixed inset-0 bg-black bg-opacity-50 hidden z-50 flex items-center justify-center p-4">
+        <div class="bg-white rounded-lg p-8 w-full max-w-md">
+            <button id="closeModal" class="float-right text-gray-600 hover:text-teal-600 mb-4">
+                ✕
+            </button>
+            <h2 class="text-2xl font-bold text-gray-800 mb-6">Sign In</h2>
+            <form id="loginForm">
+                <div class="mb-4">
+                    <label class="block text-gray-700 mb-2">Email</label>
+                    <input type="email" required class="w-full border rounded-md p-2">
+                </div>
+                <div class="mb-6">
+                    <label class="block text-gray-700 mb-2">Password</label>
+                    <input type="password" required class="w-full border rounded-md p-2">
+                </div>
+                <button type="submit" class="w-full bg-teal-600 text-white py-3 rounded-md font-medium hover:bg-teal-700">
+                    Sign In
+                </button>
+                <p class="text-center mt-4 text-gray-600">Don't have an account? <a href="#" class="text-teal-600 hover:underline">Register</a></p>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        const loginBtn = document.querySelector('a.bg-teal-600');
+        const modal = document.getElementById('loginModal');
+        const closeBtn = document.getElementById('closeModal');
+        
+        loginBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            modal.classList.remove('hidden');
+        });
+        
+        closeBtn.addEventListener('click', () => {
+            modal.classList.add('hidden');
+        });
+        
+        document.getElementById('loginForm').addEventListener('submit', (e) => {
+            e.preventDefault();
+            // Here you would add your actual login logic/AJAX call
+            alert('Login functionality would go here!');
+            modal.classList.add('hidden');
+        });
+    </script>
+</body>
+</html>
